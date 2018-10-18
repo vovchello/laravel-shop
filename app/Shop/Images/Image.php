@@ -7,7 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     protected $fillable = [
-        'product_id',
+        'imageable_id',
+        'imageable_type',
         'src'
     ];
+
+    public function imageable()
+    {
+        return $this->morphTo();
+    }
 }

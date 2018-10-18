@@ -1,4 +1,4 @@
-@if(!empty($products))
+@if($products->count())
     <ul class="row text-center list-unstyled">
         @foreach($products as $product)
             <li class="col-md-3 col-sm-6 col-xs-12 product-list">
@@ -22,11 +22,11 @@
                                 </div>
                             </div>
                         </div>
-                        @if(isset($product->cover))
-                            <img src="{{ asset("storage/$product->cover") }}" alt="{{ $product->name }}" class="img-bordered img-responsive">
-                        @else
-                            <img src="https://placehold.it/263x330" alt="{{ $product->name }}" class="img-bordered img-responsive" />
-                        @endif
+                        {{--@if(isset($product->cover))--}}
+                            {{--<img src="{{ asset("storage/$product->cover") }}" alt="{{ $product->name }}" class="img-bordered img-responsive">--}}
+                        {{--@else--}}
+                            {{--<img src="https://placehold.it/263x330" alt="{{ $product->name }}" class="img-bordered img-responsive" />--}}
+                        {{--@endif--}}
                     </div>
 
                     <div class="product-text">
@@ -36,6 +36,7 @@
                             {{ number_format($product->price, 2) }}
                         </p>
                     </div>
+
                     <!-- Modal -->
                     <div class="modal fade" id="myModal_{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">
