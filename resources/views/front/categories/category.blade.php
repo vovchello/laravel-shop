@@ -25,16 +25,14 @@
         <div class="col-md-9">
             <div class="row">
                 <div class="category-image">
-                    @if(isset($category->cover))
-                        <img src="{{ asset("storage/$category->cover") }}" alt="{{ $category->name }}" class="img-responsive" />
-                    @else
-                        <img src="https://placehold.it/1200x200" alt="{{ $category->cover }}" class="img-responsive" />
-                    @endif
+                    @foreach($category->images as $image)
+                        <img src="{{ $image->src }}" alt="">
+                    @endforeach
                 </div>
             </div>
             <hr>
             <div class="row">
-                @include('front.products.product-list', ['products' => $products])
+                @include('front.products.product-list', ['products' => $category->products])
             </div>
         </div>
     </div>

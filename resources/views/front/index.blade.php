@@ -10,13 +10,17 @@
     @foreach($categories as $category)
         <section class="new-product t100 home">
             <h2 class="text-center">{{ $category->name }}</h2>
-            <?php var_dump($category->images) ?>
+            @foreach($category->images as $image)
+                <img src="{{ asset($image->src) }}" width="400" alt="">
+            @endforeach
             @foreach($category->subCategories as $subCategory)
                 <div class="container">
                     <div class="section-title b50">
-                        <h2>{{ $subCategory->name }}</h2>
+                        <h3 class="text-center">{{ $subCategory->name }}</h3>
                     </div>
-                    @include('front.products.product-list', ['products' => $subCategory->products])
+                    @foreach($subCategory->images as $image)
+                        <img src="{{ $image->src }}" alt="">
+                    @endforeach
                     <div id="browse-all-btn">
                         <a class="btn btn-default browse-all-btn" href="{{ route('front.category.slug', $subCategory->slug) }}"
                            role="button">browse all items
