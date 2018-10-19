@@ -25,9 +25,13 @@
         <div class="col-md-9">
             <div class="row">
                 <div class="category-image">
-                    @foreach($category->images as $image)
-                        <img src="{{ $image->src }}" alt="">
-                    @endforeach
+                    @if ($category->images->count() > 0)
+                        @foreach($category->images as $image)
+                            <img src="{{ $image->src }}" alt="" class="img-responsive">
+                        @endforeach
+                    @else
+                        <img src="https://placehold.it/400x200" alt="placeholder image" class="img-responsive" />
+                    @endif
                 </div>
             </div>
             <hr>
